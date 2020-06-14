@@ -843,7 +843,7 @@ namespace Files.Filesystem
                         {
                             if (!findData.cFileName.EndsWith(".lnk") && !findData.cFileName.EndsWith(".url"))
                             {
-                                AddFile(findData, path);
+                                AddFile(findData, path, false);
                                 ++count;
                             }
                         }
@@ -851,7 +851,7 @@ namespace Files.Filesystem
                         {
                             if (findData.cFileName != "." && findData.cFileName != "..")
                             {
-                                AddFolder(findData, path);
+                                AddFolder(findData, path, false);
                                 ++count;
                             }
                         }
@@ -942,7 +942,7 @@ namespace Files.Filesystem
                                  switch (action)
                                  {
                                      case FILE_ACTION_ADDED:
-                                         AddFileOrFolder(FileName);
+                                         AddFileOrFolder(FileName, true);
                                          Debug.WriteLine("File " + FileName + " added to working directory.");
                                          break;
                                      case FILE_ACTION_REMOVED:
@@ -957,7 +957,7 @@ namespace Files.Filesystem
                                          Debug.WriteLine("File " + FileName + " will be renamed in the working directory.");
                                          break;
                                      case FILE_ACTION_RENAMED_NEW_NAME:
-                                         AddFileOrFolder(FileName);
+                                         AddFileOrFolder(FileName, false);
                                          Debug.WriteLine("File " + FileName + " was renamed in the working directory.");
                                          break;
                                      default:
@@ -987,7 +987,7 @@ namespace Files.Filesystem
             IsFolderEmptyTextDisplayed = false;
         }
 
-        public async void AddFileOrFolder(string path)
+        public async void AddFileOrFolder(string path, bool renameItem)
         {
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
                 async () =>
@@ -995,11 +995,11 @@ namespace Files.Filesystem
                     try
                     {
                         await StorageFile.GetFileFromPathAsync(path);
-                        AddFile(path);
+                        AddFile(path, renameItem);
                     }
                     catch (Exception)
                     {
-                        AddFolder(path);
+                        AddFolder(path, renameItem);
                     }
                 });
         }
@@ -1017,17 +1017,17 @@ namespace Files.Filesystem
                 });
         }
 
-        public void AddFolder(string folderPath)
+        public void AddFolder(string folderPath, bool renameItem)
         {
             FINDEX_INFO_LEVELS findInfoLevel = FINDEX_INFO_LEVELS.FindExInfoBasic;
             int additionalFlags = FIND_FIRST_EX_CASE_SENSITIVE;
 
             IntPtr hFile = FindFirstFileExFromApp(folderPath, findInfoLevel, out WIN32_FIND_DATA findData, FINDEX_SEARCH_OPS.FindExSearchNameMatch, IntPtr.Zero,
                                                   additionalFlags);
-            AddFolder(findData, Directory.GetParent(folderPath).FullName);
+            AddFolder(findData, Directory.GetParent(folderPath).FullName, renameItem);
         }
 
-        private void AddFolder(WIN32_FIND_DATA findData, string pathRoot)
+        private void AddFolder(WIN32_FIND_DATA findData, string pathRoot, bool renameItem)
         {
             if (_addFilesCTS.IsCancellationRequested)
             {
@@ -1047,7 +1047,7 @@ namespace Files.Filesystem
                 DateTimeKind.Utc);
             var itemPath = Path.Combine(pathRoot, findData.cFileName);
 
-            _filesAndFolders.Add(new ListedItem(null)
+            var listedItem = new ListedItem(null)
             {
                 PrimaryItemAttribute = StorageItemTypes.Folder,
                 ItemName = findData.cFileName,
@@ -1061,22 +1061,30 @@ namespace Files.Filesystem
                 FileSize = null,
                 FileSizeBytes = 0
                 //FolderTooltipText = tooltipString,
-            });
+            };
+            _filesAndFolders.Add(listedItem);
+
+            if (renameItem)
+            {
+                App.CurrentInstance.ContentPage.SetSelectedItemOnUi(listedItem);
+                App.CurrentInstance.ContentPage.FocusSelectedItems();
+                App.CurrentInstance.ContentPage.StartRenameItem();
+            }
 
             IsFolderEmptyTextDisplayed = false;
         }
 
-        public void AddFile(string filePath)
+        public void AddFile(string filePath, bool renameItem)
         {
             FINDEX_INFO_LEVELS findInfoLevel = FINDEX_INFO_LEVELS.FindExInfoBasic;
             int additionalFlags = FIND_FIRST_EX_CASE_SENSITIVE;
 
             IntPtr hFile = FindFirstFileExFromApp(filePath, findInfoLevel, out WIN32_FIND_DATA findData, FINDEX_SEARCH_OPS.FindExSearchNameMatch, IntPtr.Zero,
                                                   additionalFlags);
-            AddFile(findData, Directory.GetParent(filePath).FullName);
+            AddFile(findData, Directory.GetParent(filePath).FullName, renameItem);
         }
 
-        private void AddFile(WIN32_FIND_DATA findData, string pathRoot)
+        private void AddFile(WIN32_FIND_DATA findData, string pathRoot, bool renameItem)
         {
             var itemPath = Path.Combine(pathRoot, findData.cFileName);
 
@@ -1141,7 +1149,8 @@ namespace Files.Filesystem
                 IsLoadingItems = false;
                 return;
             }
-            _filesAndFolders.Add(new ListedItem(null)
+
+            var listedItem = new ListedItem(null)
             {
                 PrimaryItemAttribute = StorageItemTypes.File,
                 FileExtension = itemFileExtension,
@@ -1155,7 +1164,15 @@ namespace Files.Filesystem
                 ItemPath = itemPath,
                 FileSize = itemSize,
                 FileSizeBytes = itemSizeBytes
-            });
+            };
+            _filesAndFolders.Add(listedItem);
+
+            if (renameItem)
+            {
+                App.CurrentInstance.ContentPage.SetSelectedItemOnUi(listedItem);
+                App.CurrentInstance.ContentPage.FocusSelectedItems();
+                App.CurrentInstance.ContentPage.StartRenameItem();
+            }
 
             IsFolderEmptyTextDisplayed = false;
         }

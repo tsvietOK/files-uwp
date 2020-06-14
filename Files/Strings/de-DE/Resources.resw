@@ -339,18 +339,6 @@
   <data name="FileFolderListItem" xml:space="preserve">
     <value>Dateiordner</value>
   </data>
-  <data name="RenameDialog.Title" xml:space="preserve">
-    <value>Dateinamen eingeben</value>
-  </data>
-  <data name="RenameDialogInputText.PlaceholderText" xml:space="preserve">
-    <value>Geben Sie den Dateinamen ohne Erweiterung ein</value>
-  </data>
-  <data name="RenameDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Name festlegen</value>
-  </data>
-  <data name="RenameDialog.SecondaryButtonText" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
   <data name="NewTab" xml:space="preserve">
     <value>Neuer Tab</value>
   </data>

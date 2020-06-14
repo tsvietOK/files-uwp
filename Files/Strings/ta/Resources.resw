@@ -381,18 +381,6 @@
   <data name="ItemTypeFile" xml:space="preserve">
     <value>கோப்பு</value>
   </data>
-  <data name="RenameDialog.Title" xml:space="preserve">
-    <value>ஒரு உருப்படி பெயரை உள்ளிடுக</value>
-  </data>
-  <data name="RenameDialogInputText.PlaceholderText" xml:space="preserve">
-    <value>நீட்டிப்பு இல்லாமல் ஒரு உருப்படி பெயரை உள்ளிடுக</value>
-  </data>
-  <data name="RenameDialog.PrimaryButtonText" xml:space="preserve">
-    <value>பெயரை அமை</value>
-  </data>
-  <data name="RenameDialog.SecondaryButtonText" xml:space="preserve">
-    <value>இரத்து</value>
-  </data>
   <data name="NewTab" xml:space="preserve">
     <value>புதியத் தாவல்</value>
   </data>

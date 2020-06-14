@@ -37,6 +37,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using static Files.Dialogs.ConfirmDeleteDialog;
+using Files.Enums;
 
 namespace Files.Interacts
 {
@@ -531,6 +532,29 @@ namespace Files.Interacts
             dataRequest.Data.Properties.Title = "Data Shared From Files";
             dataRequest.Data.Properties.Description = "The items you selected will be shared";
             dataRequestDeferral.Complete();
+        }
+
+        public async void CreateFile(AddItemType fileType)
+        {
+            string currentPath = null;
+            if (App.CurrentInstance.ContentPage != null)
+            {
+                currentPath = App.CurrentInstance.ViewModel.WorkingDirectory;
+            }
+            StorageFolder folderToCreateItem = await StorageFolder.GetFolderFromPathAsync(currentPath);
+
+            if (fileType == AddItemType.Folder)
+            {
+                await folderToCreateItem.CreateFolderAsync(ResourceController.GetTranslation("NewFolder"), CreationCollisionOption.GenerateUniqueName);
+            }
+            else if (fileType == AddItemType.TextDocument)
+            {
+                await folderToCreateItem.CreateFileAsync(ResourceController.GetTranslation("NewTextDocument") + ".txt", CreationCollisionOption.GenerateUniqueName);
+            }
+            else if (fileType == AddItemType.BitmapImage)
+            {
+                await folderToCreateItem.CreateFileAsync(ResourceController.GetTranslation("NewBitmapImage") + ".bmp", CreationCollisionOption.GenerateUniqueName);
+            }
         }
 
         public async void DeleteItem_Click(object sender, RoutedEventArgs e)
@@ -1094,17 +1118,17 @@ namespace Files.Interacts
 
         public void NewFolder_Click(object sender, RoutedEventArgs e)
         {
-            AddItemDialog.CreateFile(AddItemType.Folder);
+            CreateFile(AddItemType.Folder);
         }
 
         public void NewTextDocument_Click(object sender, RoutedEventArgs e)
         {
-            AddItemDialog.CreateFile(AddItemType.TextDocument);
+            CreateFile(AddItemType.TextDocument);
         }
 
         public void NewBitmapImage_Click(object sender, RoutedEventArgs e)
         {
-            AddItemDialog.CreateFile(AddItemType.BitmapImage);
+            CreateFile(AddItemType.BitmapImage);
         }
 
         public async void ExtractItems_Click(object sender, RoutedEventArgs e)

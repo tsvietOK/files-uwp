@@ -514,22 +514,6 @@
           <source>File</source>
           <target state="translated">ファイル</target>
         </trans-unit>
-        <trans-unit id="RenameDialog.Title" translate="yes" xml:space="preserve">
-          <source>Enter an item name</source>
-          <target state="translated">項目名を入力</target>
-        </trans-unit>
-        <trans-unit id="RenameDialogInputText.PlaceholderText" translate="yes" xml:space="preserve">
-          <source>Enter an item name without an extension</source>
-          <target state="translated">拡張子なしで項目名を入力</target>
-        </trans-unit>
-        <trans-unit id="RenameDialog.PrimaryButtonText" translate="yes" xml:space="preserve">
-          <source>Set Name</source>
-          <target state="translated">名前を変更</target>
-        </trans-unit>
-        <trans-unit id="RenameDialog.SecondaryButtonText" translate="yes" xml:space="preserve">
-          <source>Cancel</source>
-          <target state="translated">キャンセル</target>
-        </trans-unit>
         <trans-unit id="NewTab" translate="yes" xml:space="preserve">
           <source>New tab</source>
           <target state="translated">新しいタブ</target>
@@ -781,10 +765,6 @@
         <trans-unit id="FileNameTeachingTip.CloseButtonContent" translate="yes" xml:space="preserve">
           <source>OK</source>
           <target state="translated">承知</target>
-        </trans-unit>
-        <trans-unit id="RenameDialogSymbolsTip.Text" translate="yes" xml:space="preserve">
-          <source>The item name must not contain the following characters: \ / : * ? " <it id="1" pos="open">&lt; &gt;</it> |</source>
-          <target state="translated">ファイル名に次の文字を含めることはできません：\ / : * ? " <it id="1" pos="open">&lt; &gt;</it> |</target>
         </trans-unit>
         <trans-unit id="SettingsAboutOpenLogLocationButton.Content" translate="yes" xml:space="preserve">
           <source>Open Log location</source>

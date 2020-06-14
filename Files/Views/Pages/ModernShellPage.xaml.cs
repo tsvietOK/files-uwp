@@ -1,4 +1,5 @@
-﻿using Files.Filesystem;
+﻿using Files.Enums;
+using Files.Filesystem;
 using Files.Interacts;
 using Files.UserControls;
 using System;
@@ -198,7 +199,7 @@ namespace Files.Views.Pages
             }
         }
 
-        private async void ModernShellPage_KeyUp(object sender, KeyRoutedEventArgs e)
+        private void ModernShellPage_KeyUp(object sender, KeyRoutedEventArgs e)
         {
             var ctrl = Window.Current.CoreWindow.GetKeyState(VirtualKey.Control).HasFlag(CoreVirtualKeyStates.Down);
             var alt = Window.Current.CoreWindow.GetKeyState(VirtualKey.Menu).HasFlag(CoreVirtualKeyStates.Down);
@@ -209,7 +210,7 @@ namespace Files.Views.Pages
             switch (c: ctrl, s: shift, a: alt, t: tabInstance, k: e.Key)
             {
                 case (true, true, false, true, VirtualKey.N): //ctrl + shift + n, new item
-                    await App.AddItemDialogDisplay.ShowAsync();
+                    App.CurrentInstance.InteractionOperations.CreateFile(AddItemType.Folder);
                     break;
 
                 case (false, true, false, true, VirtualKey.Delete): //shift + delete, PermanentDelete

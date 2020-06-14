@@ -49,7 +49,6 @@ namespace Files
         public static Dialogs.ConsentDialog ConsentDialogDisplay { get; set; }
         public static Dialogs.PropertiesDialog PropertiesDialogDisplay { get; set; }
         public static Dialogs.LayoutDialog LayoutDialogDisplay { get; set; }
-        public static Dialogs.AddItemDialog AddItemDialogDisplay { get; set; }
         public static ObservableCollection<INavigationControlItem> sideBarItems = new ObservableCollection<INavigationControlItem>();
         public static ObservableCollection<LocationItem> locationItems = new ObservableCollection<LocationItem>();
         public static ObservableCollection<WSLDistroItem> linuxDistroItems = new ObservableCollection<WSLDistroItem>();
@@ -74,7 +73,6 @@ namespace Files
             ConsentDialogDisplay = new Dialogs.ConsentDialog();
             PropertiesDialogDisplay = new Dialogs.PropertiesDialog();
             LayoutDialogDisplay = new Dialogs.LayoutDialog();
-            AddItemDialogDisplay = new Dialogs.AddItemDialog();
             ExceptionDialogDisplay = new Dialogs.ExceptionDialog();
             // this.UnhandledException += App_UnhandledException;
             Clipboard.ContentChanged += Clipboard_ContentChanged;

@@ -339,18 +339,6 @@
   <data name="FileFolderListItem" xml:space="preserve">
     <value>文件夹</value>
   </data>
-  <data name="RenameDialog.Title" xml:space="preserve">
-    <value>输入文件名</value>
-  </data>
-  <data name="RenameDialogInputText.PlaceholderText" xml:space="preserve">
-    <value>输入文件名（无扩展名）</value>
-  </data>
-  <data name="RenameDialog.PrimaryButtonText" xml:space="preserve">
-    <value>命名</value>
-  </data>
-  <data name="RenameDialog.SecondaryButtonText" xml:space="preserve">
-    <value>取消</value>
-  </data>
   <data name="NewTab" xml:space="preserve">
     <value>新标签页</value>
   </data>
@@ -593,9 +581,6 @@
   </data>
   <data name="FileNameTeachingTip.CloseButtonContent" xml:space="preserve">
     <value>确定</value>
-  </data>
-  <data name="RenameDialogSymbolsTip.Text" xml:space="preserve">
-    <value>文件名不能包含下列任何字符：\ / : * ? " &lt; &gt; |</value>
   </data>
   <data name="SettingsAboutOpenLogLocationButton.Content" xml:space="preserve">
     <value>打开日志目录</value>
