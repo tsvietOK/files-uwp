@@ -82,12 +82,11 @@
                                                 ItemsSource="{TemplateBinding TabItemsSource}"
                                                 ItemTemplate="{TemplateBinding TabItemTemplate}"
                                                 ItemTemplateSelector="{TemplateBinding TabItemTemplateSelector}"
-                                                Margin="0,5"
-                                                Background="Black"/>
+                                                Margin="0,5"/>
 
                                             <Button
                                                 Grid.Column="2"
-                                                Margin="3,6,0,6"
+                                                Margin="6,6,0,6"
                                                 x:Name="AddButton"
                                                 Content="&#xE710;"
                                                 VerticalAlignment="Center"
