@@ -207,7 +207,7 @@ namespace Files.UserControls
 
         private void DragArea_Loaded(object sender, RoutedEventArgs e)
         {
-            Window.Current.SetTitleBar(sender as Grid);
+            //Window.Current.SetTitleBar(sender as Grid);
         }
 
         private async void TabView_AddTabButtonClick(TabView sender, object args)
@@ -356,6 +356,11 @@ namespace Files.UserControls
                 Items.Remove(tabItem);
                 //App.InteractionViewModel.TabStripSelectedIndex = verticalTabView.SelectedIndex;
             }
+        }
+
+        private void DragGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Window.Current.SetTitleBar(DragGrid);
         }
     }
 }
