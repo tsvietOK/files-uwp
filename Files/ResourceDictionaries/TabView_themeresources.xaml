@@ -7,7 +7,7 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
             <StaticResource x:Key="TabViewBackground"                                       ResourceKey="SystemControlBackgroundListLowBrush" />
-            <Color x:Key="TabViewBackgroundFixed">#FFF3F2F1</Color>
+            <Color x:Key="TabViewBackgroundFixed">#FFE8E8E8</Color>
             <StaticResource x:Key="TabViewItemHeaderBackground"                             ResourceKey="SystemControlTransparentBrush" />
             <StaticResource x:Key="TabViewItemHeaderBackgroundSelected"                     ResourceKey="ApplicationPageBackgroundThemeBrush" />
             <StaticResource x:Key="TabViewItemHeaderBorderBrush"                            ResourceKey="SystemListMediumColor" />

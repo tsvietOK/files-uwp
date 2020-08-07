@@ -1056,12 +1056,12 @@
                 <ResourceDictionary>
                     <AcrylicBrush
                         x:Key="TabViewBackground"
-                        Windows10version1903:TintLuminosityOpacity="0.9"
+                        Windows10version1903:TintLuminosityOpacity="0.75"
                         AlwaysUseFallback="{x:Bind AppSettings.AcrylicEnabled, Mode=OneWay}"
                         BackgroundSource="HostBackdrop"
-                        FallbackColor="{x:Bind AppSettings.AcrylicTheme.FallbackColor, Mode=OneWay}"
+                        FallbackColor="{ThemeResource TabViewBackgroundFixed}"
                         TintColor="{x:Bind AppSettings.AcrylicTheme.TintColor, Mode=OneWay}"
-                        TintOpacity="{x:Bind AppSettings.AcrylicTheme.TintOpacity, Mode=OneWay}" />
+                        TintOpacity="0.5" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
