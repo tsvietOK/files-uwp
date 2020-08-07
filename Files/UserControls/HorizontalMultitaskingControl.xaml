@@ -86,7 +86,7 @@
 
                                             <Button
                                                 Grid.Column="2"
-                                                Margin="6,6,0,6"
+                                                Margin="0,6,0,6"
                                                 x:Name="AddButton"
                                                 Content="&#xE710;"
                                                 VerticalAlignment="Center"
@@ -1101,7 +1101,7 @@
                 <DataTemplate
                     x:DataType="local:TabItem">
                     <muxc:TabViewItem
-                        Margin="8,0,8,0"
+                        Margin="6,0,6,0"
                         AllowDrop="True"
                         Style="{StaticResource UndockedTabViewItemStyle}"
                         DragOver="TabViewItem_DragOver"
